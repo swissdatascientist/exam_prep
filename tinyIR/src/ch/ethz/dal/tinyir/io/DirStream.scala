@@ -20,7 +20,7 @@ extends DocStream {
   def length = validNames.length    
 
   private def sortedNames = validNames.sorted(DirStream.FileOrder.orderingByLex) 
-  private def validNames = new File(dirpath).listFiles.map(path(_)).filter(valid(_))
+  private def validNames : Array[String] = new File(dirpath).listFiles.map(path(_)).filter(valid(_))
   private def valid(fn: String): Boolean = fn.endsWith(extension)
   private def path (f: File): String = Try(f.getAbsolutePath).getOrElse("")  
 }
